@@ -2,6 +2,9 @@
 
 namespace RepositoryUsers.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UserModel
     {
         [Key]
