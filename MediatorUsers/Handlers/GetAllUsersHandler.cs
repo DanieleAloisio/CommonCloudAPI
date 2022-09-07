@@ -1,10 +1,10 @@
-﻿using CommonCloudAPI.Interface;
-using CommonCloudAPI.Models;
-using CommonCloudAPI.Queries;
-using CommonCloudAPI.Services;
+﻿
+using MediatorUsers.Queries;
 using MediatR;
+using RepositoryUsers.Interface;
+using RepositoryUsers.Models;
 
-namespace CommonCloudAPI.Handlers
+namespace MediatorUsers.Handlers
 {
     public class GetAllUsersHandler : IRequestHandler<GetAllUsersQuery, List<UserModel>>
     {

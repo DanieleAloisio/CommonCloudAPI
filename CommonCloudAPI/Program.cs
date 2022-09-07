@@ -1,6 +1,8 @@
-using CommonCloudAPI.Interface;
-using CommonCloudAPI.Services;
+
+using MediatorUsers;
 using MediatR;
+using RepositoryUsers.Interface;
+using RepositoryUsers.Services;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ApiDbContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatR(typeof(MediatorEntryPoint).Assembly);
 
 
 

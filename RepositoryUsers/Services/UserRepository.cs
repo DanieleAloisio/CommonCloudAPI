@@ -1,8 +1,8 @@
-﻿using CommonCloudAPI.Interface;
-using CommonCloudAPI.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using RepositoryUsers.Interface;
+using RepositoryUsers.Models;
 
-namespace CommonCloudAPI.Services
+namespace RepositoryUsers.Services
 {
     public class UserRepository : IUserRepository
     {

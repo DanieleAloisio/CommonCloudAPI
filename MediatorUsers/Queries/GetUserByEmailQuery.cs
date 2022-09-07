@@ -1,7 +1,7 @@
-﻿using CommonCloudAPI.Models;
-using MediatR;
+﻿using MediatR;
+using RepositoryUsers.Models;
 
-namespace CommonCloudAPI.Queries
+namespace MediatorUsers.Queries
 {
     public record GetUserByEmailQuery(string email) : IRequest<List<UserModel>>;
 }

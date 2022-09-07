@@ -1,6 +1,6 @@
-﻿using CommonCloudAPI.Models;
+﻿using RepositoryUsers.Models;
 
-namespace CommonCloudAPI.Interface
+namespace RepositoryUsers.Interface
 {
     public interface IUserRepository
     {

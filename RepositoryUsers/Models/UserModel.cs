@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CommonCloudAPI.Models
+namespace RepositoryUsers.Models
 {
     public class UserModel
     {

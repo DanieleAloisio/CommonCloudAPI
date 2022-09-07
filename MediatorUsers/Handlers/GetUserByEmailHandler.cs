@@ -1,10 +1,8 @@
-﻿using CommonCloudAPI.Interface;
-using CommonCloudAPI.Models;
-using CommonCloudAPI.Queries;
-using CommonCloudAPI.Services;
+﻿using MediatorUsers.Queries;
 using MediatR;
+using RepositoryUsers.Models;
 
-namespace CommonCloudAPI.Handlers
+namespace MediatorUsers.Handlers
 {
     public class GetUserByEmailHandler : IRequestHandler<GetUserByEmailQuery, List<UserModel>>
     {

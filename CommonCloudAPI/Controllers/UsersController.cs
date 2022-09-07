@@ -1,8 +1,8 @@
-﻿using CommonCloudAPI.Models;
-using CommonCloudAPI.Queries;
+﻿using MediatorUsers.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RepositoryUsers.Models;
 
 namespace CommonCloudAPI.Controllers
 {
@@ -33,7 +33,7 @@ namespace CommonCloudAPI.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<List<UserModel>> Get(string email)
         {
-            return await _mediator.Send(new GetUserByEmailQuery(email));
+            return await _mediator.Send(request: new GetUserByEmailQuery(email));
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿using CommonCloudAPI.Models;
+﻿
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using RepositoryUsers.Models;
 
-namespace CommonCloudAPI.Services
+namespace RepositoryUsers.Services
 {
     public class ApiDbContext : DbContext
     {
