@@ -4,7 +4,7 @@
     {
         public string message { get; set; }
 
-        public InfoMsg(String Message)
+        public InfoDto(String Message)
         {
             this.message = Message;
         }

@@ -24,14 +24,14 @@ namespace CommonCloudAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Get(string email)
+        public async Task<IActionResult> Get(string email)
         {
             if (email == null)
             {
                 return BadRequest(new ErrDto("empty email", StatusCodes.Status400BadRequest));
             }
 
-            var response = _mediator.Send(_mediator.Send(request: new GetUserByEmailQuery(email)));
+            var response = await _mediator.Send(request: new GetUserByEmailQuery(email));
 
             if (response == null)
             {
