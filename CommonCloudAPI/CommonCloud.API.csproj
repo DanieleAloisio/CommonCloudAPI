@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommonCloud.Log\CommonCloud.Log.csproj" />
     <ProjectReference Include="..\MediatorUsers\CommonCloud.Mediator.csproj" />
     <ProjectReference Include="..\RepositoryUsers\CommonCloud.Repository.csproj" />
   </ItemGroup>

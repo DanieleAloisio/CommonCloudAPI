@@ -1,4 +1,5 @@
 
+using CommonCloud.Log;
 using MediatorUsers;
 using MediatR;
 using RepositoryUsers.Interface;
@@ -13,9 +14,10 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddMediatR(typeof(MediatorEntryPoint).Assembly);
 
 
-
 var app = builder.Build();
 
+//Add our new middleware to the pipeline
+app.UseMiddleware<RequestResponseLoggingMiddleware>();
 app.UseRouting();
 app.UseCors(options =>
     options

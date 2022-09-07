@@ -1,4 +1,5 @@
-﻿using MediatorUsers.Queries;
+﻿using CommonCloud.API.Dto;
+using MediatorUsers.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,22 +19,26 @@ namespace CommonCloudAPI.Controllers
             _mediator = mediator;
         }
 
-        //[HttpGet]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<UserModel>))]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<List<UserModel>> Get()
-        //{
-        //    return await _mediator.Send(new GetAllUsersQuery());
-        //}
-
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<UserModel>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<List<UserModel>> Get(string email)
+        public IActionResult Get(string email)
         {
-            return await _mediator.Send(request: new GetUserByEmailQuery(email));
+            if (email == null)
+            {
+                return BadRequest(new ErrDto("empty email", StatusCodes.Status400BadRequest));
+            }
+
+            var response = _mediator.Send(_mediator.Send(request: new GetUserByEmailQuery(email)));
+
+            if (response == null)
+            {
+                return StatusCode(404, new ErrDto("users not found.", StatusCodes.Status404NotFound));
+            }
+
+            return Ok(response);
         }
     }
 }
