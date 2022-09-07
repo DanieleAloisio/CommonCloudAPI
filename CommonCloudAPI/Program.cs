@@ -1,5 +1,6 @@
 
 using CommonCloud.Log;
+using CommonCloud.Repository.Interface;
 using MediatorUsers;
 using MediatR;
 using RepositoryUsers.Interface;
@@ -10,14 +11,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ApiDbContext>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<ILogRepository, LogRepository>();
 builder.Services.AddMediatR(typeof(MediatorEntryPoint).Assembly);
 
 
 var app = builder.Build();
 
 //Add our new middleware to the pipeline
-app.UseMiddleware<RequestResponseLoggingMiddleware>();
+app.UseMiddleware<LoggingMiddleware>();
+
+
 app.UseRouting();
 app.UseCors(options =>
     options

@@ -1,4 +1,5 @@
 ﻿
+using CommonCloud.Repository.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using RepositoryUsers.Models;
@@ -15,6 +16,7 @@ namespace RepositoryUsers.Services
         }
 
         public virtual DbSet<UserModel> Users => Set<UserModel>();
+        public virtual DbSet<LogModel> Log => Set<LogModel>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -25,6 +27,9 @@ namespace RepositoryUsers.Services
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserModel>()
+                .HasKey(a => new { a.Id });
+
+            modelBuilder.Entity<LogModel>()
                 .HasKey(a => new { a.Id });
         }
 

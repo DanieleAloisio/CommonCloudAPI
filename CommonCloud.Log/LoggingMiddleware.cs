@@ -1,4 +1,6 @@
-﻿using CommonCloud.Repository.Models;
+﻿using CommonCloud.Mediator.Commands;
+using CommonCloud.Repository.Models;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using System.Text;
 
@@ -13,15 +15,18 @@ namespace CommonCloud.Log
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context)
+        public async Task Invoke(HttpContext context, IMediator mediator)
         {
             //First, get the incoming request
-            var request = await FormatRequest(context.Request);
-            var response = await FormatResponse(context.Response);
+            //var request = await FormatRequest(context.Request);
+            //var response = await FormatResponse(context.Response);
 
-            LogModel logModel = new LogModel();
-            logModel.Request = request;
-            logModel.Response = response;
+
+            var model = new InsertLogCommand("request", "response");
+
+            await mediator.Send(model);
+
+            await _next(context);
         }
 
         private async Task<string> FormatRequest(HttpRequest request)
