@@ -4,15 +4,15 @@ using RepositoryUsers.Models;
 
 namespace MediatorUsers.Handlers
 {
-    public class GetUserByMatricolaHandler : IRequestHandler<GetUserByMatricolaQuery, List<UserModel>>
+    public class GetUsersByMatricolaHandler : IRequestHandler<GetUsersByMatricolaQuery, List<UserModel>>
     {
         private readonly IMediator _mediator;
-        public GetUserByMatricolaHandler(IMediator mediator)
+        public GetUsersByMatricolaHandler(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        public async Task<List<UserModel>> Handle(GetUserByMatricolaQuery request, CancellationToken cancellationToken)
+        public async Task<List<UserModel>> Handle(GetUsersByMatricolaQuery request, CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(new GetAllUsersQuery());
             var filtered =  result.Where(x => x.Matricola.Contains(request.matricola)).ToList();

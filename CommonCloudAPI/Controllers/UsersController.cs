@@ -31,7 +31,7 @@ namespace CommonCloudAPI.Controllers
                 return BadRequest(new ErrDto("empty email", StatusCodes.Status400BadRequest));
             }
 
-            var response = await _mediator.Send(request: new GetUserByEmailQuery(email));
+            var response = await _mediator.Send(request: new GetUsersByEmailQuery(email));
 
             if (response == null || response.Count == 0)
             {
@@ -53,7 +53,7 @@ namespace CommonCloudAPI.Controllers
                 return BadRequest(new ErrDto("empty account", StatusCodes.Status400BadRequest));
             }
 
-            var response = await _mediator.Send(request: new GetUserByAccountQuery(account));
+            var response = await _mediator.Send(request: new GetUsersByAccountQuery(account));
 
             if (response == null || response.Count == 0)
             {
@@ -75,7 +75,7 @@ namespace CommonCloudAPI.Controllers
                 return BadRequest(new ErrDto("empty matricola", StatusCodes.Status400BadRequest));
             }
 
-            var response = await _mediator.Send(request: new GetUserByMatricolaQuery(matricola));
+            var response = await _mediator.Send(request: new GetUsersByMatricolaQuery(matricola));
 
             if (response == null || response.Count == 0)
             {

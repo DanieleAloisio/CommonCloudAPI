@@ -4,15 +4,15 @@ using RepositoryUsers.Models;
 
 namespace MediatorUsers.Handlers
 {
-    public class GetUserByEmailHandler : IRequestHandler<GetUserByEmailQuery, List<UserModel>>
+    public class GetUsersByEmailHandler : IRequestHandler<GetUsersByEmailQuery, List<UserModel>>
     {
         private readonly IMediator _mediator;
-        public GetUserByEmailHandler(IMediator mediator)
+        public GetUsersByEmailHandler(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        public async Task<List<UserModel>> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)
+        public async Task<List<UserModel>> Handle(GetUsersByEmailQuery request, CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(new GetAllUsersQuery());
             var filtered =  result.Where(x => x.Email.Contains(request.email)).ToList();
