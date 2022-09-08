@@ -33,9 +33,9 @@ namespace CommonCloudAPI.Controllers
 
             var response = await _mediator.Send(request: new GetUserByEmailQuery(email));
 
-            if (response == null)
+            if (response == null || response.Count == 0)
             {
-                return StatusCode(404, new ErrDto("users not found.", StatusCodes.Status404NotFound));
+                return NotFound(new ErrDto("users not found.", StatusCodes.Status404NotFound));
             }
 
             return Ok(response);
