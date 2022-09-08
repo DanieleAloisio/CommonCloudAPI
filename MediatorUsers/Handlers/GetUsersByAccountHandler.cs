@@ -1,22 +1,24 @@
 ﻿using MediatorUsers.Queries;
 using MediatR;
+using RepositoryUsers.Interface;
 using RepositoryUsers.Models;
 
 namespace MediatorUsers.Handlers
 {
     public class GetUsersByAccountHandler : IRequestHandler<GetUsersByAccountQuery, List<UserModel>>
     {
-        private readonly IMediator _mediator;
-        public GetUsersByAccountHandler(IMediator mediator)
+        /// <summary>
+        /// Handler Get Users By Account 
+        /// </summary>
+        private readonly IUserRepository _repos;
+        public GetUsersByAccountHandler(IUserRepository repos)
         {
-            _mediator = mediator;
+            _repos = repos;
         }
 
         public async Task<List<UserModel>> Handle(GetUsersByAccountQuery request, CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(new GetAllUsersQuery());
-            var filtered = result.Where(x => x.Account.Contains(request.account)).ToList();
-            return filtered;
+            return await _repos.GetUsersByAccount(request.account);
         }
     }
 }

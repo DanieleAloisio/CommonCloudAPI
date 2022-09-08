@@ -1,22 +1,24 @@
 ﻿using MediatorUsers.Queries;
 using MediatR;
+using RepositoryUsers.Interface;
 using RepositoryUsers.Models;
 
 namespace MediatorUsers.Handlers
 {
+    /// <summary>
+    /// Handler Get Users By Email 
+    /// </summary>
     public class GetUsersByEmailHandler : IRequestHandler<GetUsersByEmailQuery, List<UserModel>>
     {
-        private readonly IMediator _mediator;
-        public GetUsersByEmailHandler(IMediator mediator)
+        private readonly IUserRepository _repos;
+        public GetUsersByEmailHandler(IUserRepository repos)
         {
-            _mediator = mediator;
+            _repos = repos;
         }
 
         public async Task<List<UserModel>> Handle(GetUsersByEmailQuery request, CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(new GetAllUsersQuery());
-            var filtered =  result.Where(x => x.Email.Contains(request.email)).ToList();
-            return filtered;
+            return await _repos.GetUsersByEmail(request.email);
         }
     }
 }

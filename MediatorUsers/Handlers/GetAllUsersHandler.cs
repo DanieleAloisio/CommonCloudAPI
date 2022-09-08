@@ -6,6 +6,9 @@ using RepositoryUsers.Models;
 
 namespace MediatorUsers.Handlers
 {
+    /// <summary>
+    /// Handler restituisce tutti gli user
+    /// </summary>
     public class GetAllUsersHandler : IRequestHandler<GetAllUsersQuery, List<UserModel>>
     {
         private readonly IUserRepository _repository;

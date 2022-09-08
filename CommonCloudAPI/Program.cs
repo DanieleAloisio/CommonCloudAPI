@@ -7,6 +7,11 @@ using RepositoryUsers.Interface;
 using RepositoryUsers.Services;
 using System.Reflection;
 
+/// <summary>
+/// Mediator 
+/// Middleware per i log
+/// CORS
+/// </summary>
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

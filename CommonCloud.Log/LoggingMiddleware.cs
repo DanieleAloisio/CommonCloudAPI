@@ -7,6 +7,9 @@ using System.Text;
 
 namespace CommonCloud.Log
 {
+    /// <summary>
+    /// Middleware per log chiamate http
+    /// </summary>
     public class LoggingMiddleware
     {
         private readonly RequestDelegate _next;

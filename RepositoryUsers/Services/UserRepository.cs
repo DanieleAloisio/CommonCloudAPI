@@ -4,6 +4,10 @@ using RepositoryUsers.Models;
 
 namespace RepositoryUsers.Services
 {
+    /// <summary>
+    /// Repository User
+    /// </summary>
+
     public class UserRepository : IUserRepository
     {
         private ApiDbContext _apiDbContext;
@@ -18,29 +22,29 @@ namespace RepositoryUsers.Services
             return await _apiDbContext.Users.ToListAsync();
         }
 
-        public Task<UserModel> GetUserByAccount(string account)
+        public async Task<List<UserModel>> GetUsersByAccount(string account)
         {
-            throw new NotImplementedException();
+            return await _apiDbContext.Users.Where(x => x.Account.Contains(account)).ToListAsync();
         }
 
-        public async Task<List<UserModel>> GetUserByEmail(string email)
+        public async Task<List<UserModel>> GetUsersByEmail(string email)
         {
-            return await _apiDbContext.Users.Where(x => x.Email == email).ToListAsync();
+            return await _apiDbContext.Users.Where(x => x.Email.Contains(email)).ToListAsync();
         }
 
-        public Task<IEnumerable<UserModel>> GetUserByFreeSearch(string text)
+        public async Task<List<UserModel>> GetUsersByFreeSearch(string text)
         {
-            throw new NotImplementedException();
+            return await _apiDbContext.Users.Where(x => x.Email.Contains(text) ||
+                                                         x.Matricola.Contains(text) ||
+                                                         x.Nome.Contains(text) ||
+                                                         x.Cognome.Contains(text) ||
+                                                         x.Account.Contains(text)
+                                                         ).ToListAsync();
         }
 
-        public Task<UserModel> GetUserByRegistrationNumber(string registrationNumber)
+        public async Task<List<UserModel>> GetUsersByMatricola(string matricola)
         {
-            throw new NotImplementedException();
-        }
-
-        Task<List<UserModel>> IUserRepository.GetUserByFreeSearch(string text)
-        {
-            throw new NotImplementedException();
+            return await _apiDbContext.Users.Where(x => x.Matricola.Contains(matricola)).ToListAsync();
         }
     }
 }

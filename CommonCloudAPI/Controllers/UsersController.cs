@@ -7,6 +7,9 @@ using RepositoryUsers.Models;
 
 namespace CommonCloudAPI.Controllers
 {
+    /// <summary>
+    /// API Users DB: COMMONCLOUD
+    /// </summary>
     [ApiController]
     [Produces("application/json")]
     [Route("api/users")]

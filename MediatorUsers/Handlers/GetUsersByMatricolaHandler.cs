@@ -1,22 +1,25 @@
 ﻿using MediatorUsers.Queries;
 using MediatR;
+using RepositoryUsers.Interface;
 using RepositoryUsers.Models;
 
 namespace MediatorUsers.Handlers
 {
+    /// <summary>
+    /// Handler Get Users By Matricola 
+    /// </summary>
+    /// 
     public class GetUsersByMatricolaHandler : IRequestHandler<GetUsersByMatricolaQuery, List<UserModel>>
     {
-        private readonly IMediator _mediator;
-        public GetUsersByMatricolaHandler(IMediator mediator)
+        private readonly IUserRepository _repos;
+        public GetUsersByMatricolaHandler(IUserRepository repos)
         {
-            _mediator = mediator;
+            _repos = repos;
         }
 
         public async Task<List<UserModel>> Handle(GetUsersByMatricolaQuery request, CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(new GetAllUsersQuery());
-            var filtered =  result.Where(x => x.Matricola.Contains(request.matricola)).ToList();
-            return filtered;
+            return await _repos.GetUsersByMatricola(request.matricola);
         }
     }
 }

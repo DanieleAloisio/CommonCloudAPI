@@ -1,28 +1,25 @@
 ﻿using MediatorUsers.Queries;
 using MediatR;
+using RepositoryUsers.Interface;
 using RepositoryUsers.Models;
 
 namespace MediatorUsers.Handlers
 {
     public class GetUsersByFieldHandler : IRequestHandler<GetUsersByFieldQuery, List<UserModel>>
     {
-        private readonly IMediator _mediator;
-        public GetUsersByFieldHandler(IMediator mediator)
+        /// <summary>
+        /// Handler Get Users By Field 
+        /// </summary>
+
+        private readonly IUserRepository _repos;
+        public GetUsersByFieldHandler(IUserRepository repos)
         {
-            _mediator = mediator;
+            _repos = repos;
         }
 
         public async Task<List<UserModel>> Handle(GetUsersByFieldQuery request, CancellationToken cancellationToken)
         {
-            var field = request.field;
-            var result = await _mediator.Send(new GetAllUsersQuery());
-            var filtered =  result.Where(x => x.Email.Contains(field) ||
-                                              x.Matricola.Contains(field) ||
-                                              x.Nome.Contains(field) ||
-                                              x.Cognome.Contains(field) ||
-                                              x.Account.Contains(field)
-                                              ).ToList();
-            return filtered;
+            return await _repos.GetUsersByFreeSearch(request.field);
         }
     }
 }

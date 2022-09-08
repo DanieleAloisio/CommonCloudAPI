@@ -5,10 +5,10 @@ namespace RepositoryUsers.Interface
     public interface IUserRepository
     {
         Task<List<UserModel>> GetAllUsers();
-        Task<List<UserModel>> GetUserByEmail(string email);
-        Task<UserModel> GetUserByRegistrationNumber(string registrationNumber);
-        Task<UserModel> GetUserByAccount(string account);
-        Task<List<UserModel>> GetUserByFreeSearch(string text);
+        Task<List<UserModel>> GetUsersByEmail(string email);
+        Task<List<UserModel>> GetUsersByMatricola(string registrationNumber);
+        Task<List<UserModel>> GetUsersByAccount(string account);
+        Task<List<UserModel>> GetUsersByFreeSearch(string text);
 
     }
 }

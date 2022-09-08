@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace CommonCloud.Mediator.Commands
 {
+    /// <summary>
+    /// Command Insert log
+    /// </summary>
     public record InsertLogCommand(string request, string response) : IRequest<bool>
     {
     }

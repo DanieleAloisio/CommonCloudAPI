@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace CommonCloud.Mediator.Handlers
 {
+    /// <summary>
+    /// Handler Insert Log
+    /// </summary>
     public class InsertLogHandler : IRequestHandler<InsertLogCommand, bool>
     {
 
