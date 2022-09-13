@@ -19,22 +19,22 @@ namespace RepositoryUsers.Services
 
         public async Task<List<UserModel>> GetAllUsers()
         {
-            return await _apiDbContext.Users.ToListAsync();
+            return await _apiDbContext.AR.ToListAsync();
         }
 
         public async Task<List<UserModel>> GetUsersByAccount(string account)
         {
-            return await _apiDbContext.Users.Where(x => x.Account.Contains(account)).ToListAsync();
+            return await _apiDbContext.AR.Where(x => x.Account.Contains(account)).ToListAsync();
         }
 
         public async Task<List<UserModel>> GetUsersByEmail(string email)
         {
-            return await _apiDbContext.Users.Where(x => x.Email.Contains(email)).ToListAsync();
+            return await _apiDbContext.AR.Where(x => x.Email.Contains(email)).ToListAsync();
         }
 
         public async Task<List<UserModel>> GetUsersByFreeSearch(string text)
         {
-            return await _apiDbContext.Users.Where(x => x.Email.Contains(text) ||
+            return await _apiDbContext.AR.Where(x => x.Email.Contains(text) ||
                                                          x.Matricola.Contains(text) ||
                                                          x.Nome.Contains(text) ||
                                                          x.Cognome.Contains(text) ||
@@ -44,7 +44,7 @@ namespace RepositoryUsers.Services
 
         public async Task<List<UserModel>> GetUsersByMatricola(string matricola)
         {
-            return await _apiDbContext.Users.Where(x => x.Matricola.Contains(matricola)).ToListAsync();
+            return await _apiDbContext.AR.Where(x => x.Matricola.Contains(matricola)).ToListAsync();
         }
     }
 }

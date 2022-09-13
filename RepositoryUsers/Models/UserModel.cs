@@ -8,11 +8,12 @@ namespace RepositoryUsers.Models
     public class UserModel
     {
         [Key]
-        public int Id { get; set; }
+        public string Matricola { get; set; }
+        public string Account { get; set; }
         public string Nome { get; set; }
         public string Cognome { get; set; }
-        public string Matricola { get; set; }
+        public bool NTAccount { get; set; }
+        public string Dominio { get; set; }
         public string Email { get; set; }
-        public string Account { get; set; }
     }
 }

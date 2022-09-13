@@ -15,7 +15,7 @@ namespace RepositoryUsers.Services
             Configuration = configuration;
         }
 
-        public virtual DbSet<UserModel> Users => Set<UserModel>();
+        public virtual DbSet<UserModel> AR => Set<UserModel>();
         public virtual DbSet<LogModel> Log => Set<LogModel>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -27,7 +27,7 @@ namespace RepositoryUsers.Services
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserModel>()
-                .HasKey(a => new { a.Id });
+                .HasKey(a => new { a.Matricola });
 
             modelBuilder.Entity<LogModel>()
                 .HasKey(a => new { a.Id });
