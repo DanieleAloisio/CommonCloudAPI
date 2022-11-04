@@ -1,4 +1,5 @@
-﻿using CommonCloud.Mediator.Commands;
+﻿using CommonCloud.Log.Dto;
+using CommonCloud.Mediator.Commands;
 using CommonCloud.Repository.Models;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -25,6 +26,10 @@ namespace CommonCloud.Log
             {
                 await _next(context);
             }
+            catch (ItemNotFoundException)
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+            }
             catch (Exception)
             {
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
@@ -35,10 +40,7 @@ namespace CommonCloud.Log
                 var response = context.Response.StatusCode.ToString();
 
                 var model = new InsertLogCommand(request, response);
-
                 await mediator.Send(model);
-
-                //await _next(context);
             }
            
         }
