@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CommonCloud.Repository.Models;
+using Microsoft.EntityFrameworkCore;
 using RepositoryUsers.Interface;
-using RepositoryUsers.Models;
 
 namespace RepositoryUsers.Services
 {
@@ -35,6 +35,16 @@ namespace RepositoryUsers.Services
         public async Task<List<UserModel>> GetUsersByFreeSearch(string text)
         {
             return await _apiDbContext.AR.Where(x => x.Email.Contains(text) ||
+                                                         x.Matricola.Contains(text) ||
+                                                         x.Nome.Contains(text) ||
+                                                         x.Cognome.Contains(text) ||
+                                                         x.Account.Contains(text)
+                                                         ).ToListAsync();
+        }
+
+        public async Task<List<AccountReteModel>> VW_AccountRete(string text)
+        {
+            return await _apiDbContext.VW_AccountRete.Where(x => x.Email.Contains(text) ||
                                                          x.Matricola.Contains(text) ||
                                                          x.Nome.Contains(text) ||
                                                          x.Cognome.Contains(text) ||

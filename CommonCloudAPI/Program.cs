@@ -19,9 +19,16 @@ builder.Services.AddDbContext<ApiDbContext>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<ILogRepository, LogRepository>();
 builder.Services.AddMediatR(typeof(MediatorEntryPoint).Assembly);
-
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment() || builder.Configuration.GetSection("UseSwagger").Value == "1")
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 //Add our new middleware to the pipeline
 app.UseMiddleware<LoggingMiddleware>();

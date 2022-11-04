@@ -1,8 +1,9 @@
 ﻿
+using CommonCloud.Repository.Models;
 using MediatorUsers.Queries;
 using MediatR;
 using RepositoryUsers.Interface;
-using RepositoryUsers.Models;
+
 
 namespace MediatorUsers.Handlers
 {

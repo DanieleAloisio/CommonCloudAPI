@@ -1,9 +1,10 @@
 ﻿using CommonCloud.API.Dto;
+using CommonCloud.Repository.Models;
 using MediatorUsers.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RepositoryUsers.Models;
+using CommonCloud.Repository.Models;
 
 namespace CommonCloudAPI.Controllers
 {
@@ -11,7 +12,6 @@ namespace CommonCloudAPI.Controllers
     /// API Users DB: COMMONCLOUD
     /// </summary>
     [ApiController]
-    [Produces("application/json")]
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
@@ -89,7 +89,7 @@ namespace CommonCloudAPI.Controllers
         }
 
         [HttpGet("getByField/{field}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<UserModel>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AccountReteModel>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RepositoryUsers.Models;
+using CommonCloud.Repository.Models;
 
 namespace MediatorUsers.Queries
 {

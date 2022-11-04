@@ -1,8 +1,5 @@
 ﻿using CommonCloud.Repository.Interface;
 using CommonCloud.Repository.Models;
-using Microsoft.EntityFrameworkCore;
-using RepositoryUsers.Interface;
-using RepositoryUsers.Models;
 
 namespace RepositoryUsers.Services
 {

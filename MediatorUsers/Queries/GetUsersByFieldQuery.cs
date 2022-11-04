@@ -1,7 +1,7 @@
-﻿using MediatR;
-using RepositoryUsers.Models;
+﻿using CommonCloud.Repository.Models;
+using MediatR;
 
 namespace MediatorUsers.Queries
 {
-    public record GetUsersByFieldQuery(string field) : IRequest<List<UserModel>>;
+    public record GetUsersByFieldQuery(string field) : IRequest<List<AccountReteModel>>;
 }

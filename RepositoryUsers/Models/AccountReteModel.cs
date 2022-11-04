@@ -1,13 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CommonCloud.Repository.Models
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class UserModel
+    public class AccountReteModel
     {
-        [Key]
         public string Matricola { get; set; }
         public string Account { get; set; }
         public string Nome { get; set; }

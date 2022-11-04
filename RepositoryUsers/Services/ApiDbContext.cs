@@ -2,7 +2,6 @@
 using CommonCloud.Repository.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using RepositoryUsers.Models;
 
 namespace RepositoryUsers.Services
 {
@@ -14,6 +13,8 @@ namespace RepositoryUsers.Services
         {
             Configuration = configuration;
         }
+
+        public DbSet<AccountReteModel> VW_AccountRete { get; set; }
 
         public virtual DbSet<UserModel> AR => Set<UserModel>();
         public virtual DbSet<LogModel> Log => Set<LogModel>();
@@ -31,6 +32,14 @@ namespace RepositoryUsers.Services
 
             modelBuilder.Entity<LogModel>()
                 .HasKey(a => new { a.Id });
+
+            modelBuilder
+                .Entity<AccountReteModel>(
+                    eb =>
+                    {
+                        eb.HasNoKey();
+                        eb.ToView("VW_AccountRete");
+                    });
         }
 
     }

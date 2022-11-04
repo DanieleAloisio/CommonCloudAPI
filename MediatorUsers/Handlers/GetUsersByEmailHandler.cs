@@ -1,7 +1,7 @@
 ﻿using MediatorUsers.Queries;
 using MediatR;
 using RepositoryUsers.Interface;
-using RepositoryUsers.Models;
+using CommonCloud.Repository.Models;
 
 namespace MediatorUsers.Handlers
 {
