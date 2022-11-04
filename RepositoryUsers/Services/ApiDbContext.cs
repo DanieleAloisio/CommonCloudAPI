@@ -16,7 +16,6 @@ namespace RepositoryUsers.Services
 
         public DbSet<AccountReteModel> VW_AccountRete { get; set; }
 
-        //public virtual DbSet<AccountReteModel> AR => Set<AccountReteModel>();
         public virtual DbSet<LogModel> Log => Set<LogModel>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

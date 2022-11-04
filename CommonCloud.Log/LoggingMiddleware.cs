@@ -38,7 +38,7 @@ namespace CommonCloud.Log
 
                 await mediator.Send(model);
 
-                await _next(context);
+                //await _next(context);
             }
            
         }

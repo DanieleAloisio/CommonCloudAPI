@@ -2,9 +2,7 @@
 using CommonCloud.Repository.Models;
 using MediatorUsers.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using CommonCloud.Repository.Models;
 
 namespace CommonCloudAPI.Controllers
 {
