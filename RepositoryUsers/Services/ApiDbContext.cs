@@ -16,7 +16,7 @@ namespace RepositoryUsers.Services
 
         public DbSet<AccountReteModel> VW_AccountRete { get; set; }
 
-        public virtual DbSet<UserModel> AR => Set<UserModel>();
+        //public virtual DbSet<AccountReteModel> AR => Set<AccountReteModel>();
         public virtual DbSet<LogModel> Log => Set<LogModel>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -27,9 +27,6 @@ namespace RepositoryUsers.Services
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserModel>()
-                .HasKey(a => new { a.Matricola });
-
             modelBuilder.Entity<LogModel>()
                 .HasKey(a => new { a.Id });
 

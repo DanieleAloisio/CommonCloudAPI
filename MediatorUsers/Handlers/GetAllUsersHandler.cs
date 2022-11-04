@@ -10,7 +10,7 @@ namespace MediatorUsers.Handlers
     /// <summary>
     /// Handler restituisce tutti gli user
     /// </summary>
-    public class GetAllUsersHandler : IRequestHandler<GetAllUsersQuery, List<UserModel>>
+    public class GetAllUsersHandler : IRequestHandler<GetAllUsersQuery, List<AccountReteModel>>
     {
         private readonly IUserRepository _repository;
         public GetAllUsersHandler(IUserRepository repository)
@@ -18,7 +18,7 @@ namespace MediatorUsers.Handlers
             _repository = repository;
         }
 
-        public async Task<List<UserModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        public async Task<List<AccountReteModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
             return await _repository.GetAllUsers();
         }

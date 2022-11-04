@@ -8,7 +8,7 @@ namespace MediatorUsers.Handlers
     /// <summary>
     /// Handler Get Users By Email 
     /// </summary>
-    public class GetUsersByEmailHandler : IRequestHandler<GetUsersByEmailQuery, List<UserModel>>
+    public class GetUsersByEmailHandler : IRequestHandler<GetUsersByEmailQuery, List<AccountReteModel>>
     {
         private readonly IUserRepository _repos;
         public GetUsersByEmailHandler(IUserRepository repos)
@@ -16,7 +16,7 @@ namespace MediatorUsers.Handlers
             _repos = repos;
         }
 
-        public async Task<List<UserModel>> Handle(GetUsersByEmailQuery request, CancellationToken cancellationToken)
+        public async Task<List<AccountReteModel>> Handle(GetUsersByEmailQuery request, CancellationToken cancellationToken)
         {
             return await _repos.GetUsersByEmail(request.email);
         }

@@ -3,5 +3,5 @@ using CommonCloud.Repository.Models;
 
 namespace MediatorUsers.Queries
 {
-    public record GetUsersByMatricolaQuery(string matricola) : IRequest<List<UserModel>>;
+    public record GetUsersByMatricolaQuery(string matricola) : IRequest<List<AccountReteModel>>;
 }

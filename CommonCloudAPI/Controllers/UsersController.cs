@@ -23,7 +23,7 @@ namespace CommonCloudAPI.Controllers
         }
 
         [HttpGet("getByEmail/{email}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<UserModel>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AccountReteModel>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -45,7 +45,7 @@ namespace CommonCloudAPI.Controllers
         }
 
         [HttpGet("getByAccount/{account}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<UserModel>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AccountReteModel>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -67,7 +67,7 @@ namespace CommonCloudAPI.Controllers
         }
 
         [HttpGet("getByMatricola/{matricola}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<UserModel>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AccountReteModel>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

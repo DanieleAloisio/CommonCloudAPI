@@ -3,5 +3,5 @@ using CommonCloud.Repository.Models;
 
 namespace MediatorUsers.Queries
 {
-    public record GetUsersByAccountQuery(string account) : IRequest<List<UserModel>>;
+    public record GetUsersByAccountQuery(string account) : IRequest<List<AccountReteModel>>;
 }
